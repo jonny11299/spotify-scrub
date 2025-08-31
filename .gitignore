@@ -16,3 +16,4 @@ spotify jsons/
 
 # macOS cruft
 .DS_Store
+spotify csvs/
