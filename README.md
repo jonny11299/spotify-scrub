@@ -139,7 +139,7 @@ saved_albums.json      top_artists_all.json
 
 ## License
 
-MIT (or your preferred license). Add a `LICENSE` file.
+This is open-source. Anyone can use it. I don't care. Just get off Spotify. Sooner is better.
 
 ---
 
