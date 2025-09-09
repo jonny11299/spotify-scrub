@@ -1,4 +1,4 @@
-# Spotify Scrub (Library Exporter)
+# Spotify Scrub (Library Exporter) — Windows Guide
 
 Export your Spotify library (playlists, liked tracks, top artists, recently played, etc.) to **CSV and JSON** files using Python + Spotipy.
 
@@ -9,64 +9,63 @@ Export your Spotify library (playlists, liked tracks, top artists, recently play
 ---
 
 ## Requirements
-- macOS (tested), Python **3.9+** recommended  
+- Windows 10/11  
+- Python **3.9+** (from [python.org](https://www.python.org/downloads/))  
 - Python packages: `pandas`, `spotipy`
 
 ---
 
-## Quick Start (Mac)
+## Quick Start (Windows)
 
-1. **Download** this repository and put `spotify_scrub.py` in a new folder.
+1. **Download the script**  
+   Put `spotify_scrub.py` in a new folder, e.g. `C:\Users\<YourName>\spotify-scrub`.
 
-2. **Install Python** (if you don’t already have it):  
-   - macOS: `brew install python` (or download from [python.org](https://www.python.org/downloads/))
+2. **Install Python**  
+   - Download from [python.org](https://www.python.org/downloads/) and install.  
+   - During installation, check **“Add Python to PATH”**.
 
-3. **Create a virtual environment (optional but recommended):**
-   ```bash
-   cd /path/to/your/folder
-   python3 -m venv .venv
-   source .venv/bin/activate
+3. **(Optional) Create a virtual environment**  
+   Open **PowerShell** and run:
+   ```powershell
+   cd C:\Users\<YourName>\spotify-scrub
+   python -m venv .venv
+   .venv\Scripts\activate
    ```
 
-4. **Install dependencies:**
-   ```bash
-   python3 -m pip install --upgrade pip
-   python3 -m pip install pandas spotipy
-   ```
-
-   Or with a `requirements.txt`:
-   ```
-   pandas
-   spotipy
+4. **Install dependencies**  
+   ```powershell
+   python -m pip install --upgrade pip
+   python -m pip install pandas spotipy
    ```
 
 5. **Create a Spotify for Developers app**  
    - Go to https://developer.spotify.com/dashboard  
    - Log in with your Spotify account; click **Create app**  
    - **Which API/SDKs are you planning to use?** → *Web API*  
-   - **Redirect URIs** → add:  
+   - **Redirect URIs** → add:
      ```
      http://127.0.0.1:8888/callback/
      ```
    - Save your **Client ID** and **Client Secret**.
 
-6. **Run the script:**
-   ```bash
-   python3 spotify_scrub.py
+6. **Run the script**  
+   From the project folder in PowerShell:
+   ```powershell
+   python spotify_scrub.py
    ```
    - You will be prompted:
      - “Please enter your CLIENT_ID”
      - “Please enter your CLIENT_SECRET”
-   - Then a browser window will open for Spotify login/consent.
+   - A browser window will open for Spotify login/consent.
 
 7. **Email access rules — important**  
    Your Spotify email must **either**:
-   - Be the same email that owns the Spotify Developer app **or**
+   - Be the same email that owns the Spotify Developer app **or**  
    - Be added to the app’s **User Management** in the Developer Dashboard
 
 ---
 
-## The following scopes will be granted to the script:
+## Scopes Requested
 ```python
 "user-library-read",        # liked songs, saved albums/shows/episodes
 "playlist-read-private",
@@ -78,25 +77,21 @@ Export your Spotify library (playlists, liked tracks, top artists, recently play
 
 ---
 
-## Common Issues & Fixes
+## Common Issues (Windows)
 
 **Redirect URI mismatch**  
 - Error: *INVALID_CLIENT: Invalid redirect URI*  
-- Fix: Make sure the **exact** URI `http://127.0.0.1:8888/callback/` is added in your Spotify app settings.
+- Fix: Make sure `http://127.0.0.1:8888/callback/` is in your Spotify app settings.
 
-**Stuck with a bad token / changed scopes**  
-- Delete the local Spotipy cache file:
-  ```bash
-  rm .cache*
+**Bad token or changed scopes**  
+- Delete the Spotipy cache file:
+  ```powershell
+  del .cache*
   ```
-  Then re-run the script to re-login.
+  Then re-run the script.
 
-**403 / some playlists missing**  
-- Private or collaborative playlists require `playlist-read-private` and `playlist-read-collaborative`.  
-- Also verify the user is allowed in **User Management** for the app.
-
-**Wrong account logging in**  
-- If the browser auto-logs into a different Spotify account, open a private window and re-run so you can choose the correct account.
+**Wrong Spotify account logging in**  
+- If your browser auto-logs into the wrong account, open an **InPrivate/Incognito** window and re-run.
 
 ---
 
