@@ -124,18 +124,15 @@ saved_albums.json      top_artists_all.json
 
 ---
 
-## Development Notes
+## 👾Uploading to TIDAL👾:
 
-- Keep `CLIENT_ID` and `CLIENT_SECRET` **out of version control**.  
-- Consider adding these to `.gitignore`:
-  ```
-  .venv/
-  .cache*
-  spotify csvs/
-  spotify jsons/
-  ```
+You can use "autotidal.py" to automatically re-create your Spotify playlists on TIDAL.
 
----
+To do this, simply run "python3 autotidal.py" in terminal, and follow the steps.
+
+You'll be prompted to select specific playlists to upload to TIDAL.
+
+
 
 ## License
 
