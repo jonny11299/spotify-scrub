@@ -130,7 +130,9 @@ You can use "autotidal.py" to automatically re-create your Spotify playlists on 
 
 To do this, simply run "python3 autotidal.py" in terminal, and follow the steps.
 
-You'll be prompted to select specific playlists to upload to TIDAL.
+You may have to first run a quick "pip install tidalapi" if the package isn't installed, though.
+
+Once the app is running, you'll be prompted to select specific playlists to upload to TIDAL.
 
 
 
