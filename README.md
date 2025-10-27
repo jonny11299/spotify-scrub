@@ -1,25 +1,26 @@
 # Spotify Scrub (Library Exporter)
 
 Migrate your heartfelt playlists from Spotify to Tidal.
+
 Save all of your precious listening data from years on Spotify.
 
-Exports your Spotify library (playlists, liked tracks, top artists, recently played, etc.) to **CSV and JSON** files using Python + Spotipy.
-
 ## Features
-- Exports data to **CSV and JSON** files in subfolders (`spotify csvs` and `spotify jsons`)  
-- Works by interactively prompting for your **CLIENT_ID** and **CLIENT_SECRET**
+- Exports data to **CSV and JSON** files in subfolders (`spotify csvs` and `spotify jsons`)
+- Includes data such as playlists, liked tracks, top artists, recently played, etc.
+- Uses safe API calls to ensure users' data is not leaked to anybody but themselves.
+- Uses Python, Spotipy, and Tidal's unofficial API
 
 ---
 
 ## Requirements
 - macOS (tested), Python **3.9+** recommended  
-- Python packages: `pandas`, `spotipy`
+- Python packages: `pandas`, `spotipy`, `tidalapi`
 
 ---
 
 ## Quick Start (Mac)
 
-1. **Download** this repository and put `spotify_scrub.py` in a new folder.
+1. **Download** this repository.
 
 2. **Install Python** (if you don’t already have it):  
    - macOS: `brew install python` (or download from [python.org](https://www.python.org/downloads/))
@@ -34,13 +35,7 @@ Exports your Spotify library (playlists, liked tracks, top artists, recently pla
 4. **Install dependencies:**
    ```bash
    python3 -m pip install --upgrade pip
-   python3 -m pip install pandas spotipy
-   ```
-
-   Or with a `requirements.txt`:
-   ```
-   pandas
-   spotipy
+   python3 -m pip install pandas spotipy tidalapi
    ```
 
 5. **Create a Spotify for Developers app**  
@@ -53,7 +48,7 @@ Exports your Spotify library (playlists, liked tracks, top artists, recently pla
      ```
    - Save your **Client ID** and **Client Secret**.
 
-6. **Run the script:**
+6. **Run the Spotify script:**
    ```bash
    python3 spotify_scrub.py
    ```
@@ -66,6 +61,11 @@ Exports your Spotify library (playlists, liked tracks, top artists, recently pla
    Your Spotify email must **either**:
    - Be the same email that owns the Spotify Developer app **or**
    - Be added to the app’s **User Management** in the Developer Dashboard
+  
+6. **Run the Tidal script:**
+   ```bash
+   python3 autotidal.py
+   ```
 
 ---
 
@@ -83,19 +83,20 @@ Exports your Spotify library (playlists, liked tracks, top artists, recently pla
 
 ## Common Issues & Fixes
 
-**Redirect URI mismatch**  
-- Error: *INVALID_CLIENT: Invalid redirect URI*  
-- Fix: Make sure the **exact** URI `http://127.0.0.1:8888/callback/` is added in your Spotify app settings.
-
 **Stuck with a bad token / changed scopes**  
 - Delete the local Spotipy cache file:
   ```bash
   rm .cache*
   ```
   Then re-run the script to re-login.
+  
+**Redirect URI mismatch**  
+- Error: *INVALID_CLIENT: Invalid redirect URI*  
+- Fix: Make sure the **exact** URI `http://127.0.0.1:8888/callback/` is added in your Spotify app settings.
 
 **403 / some playlists missing**  
-- Private or collaborative playlists require `playlist-read-private` and `playlist-read-collaborative`.  
+- Private or collaborative playlists require `playlist-read-private` and `playlist-read-collaborative`.
+- Set the above setting on your Spotify app.
 - Also verify the user is allowed in **User Management** for the app.
 
 **Wrong account logging in**  
