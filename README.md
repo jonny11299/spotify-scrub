@@ -1,6 +1,9 @@
 # Spotify Scrub (Library Exporter)
 
-Export your Spotify library (playlists, liked tracks, top artists, recently played, etc.) to **CSV and JSON** files using Python + Spotipy.
+Migrate your heartfelt playlists from Spotify to Tidal.
+Save all of your precious listening data from years on Spotify.
+
+Exports your Spotify library (playlists, liked tracks, top artists, recently played, etc.) to **CSV and JSON** files using Python + Spotipy.
 
 ## Features
 - Exports data to **CSV and JSON** files in subfolders (`spotify csvs` and `spotify jsons`)  
